@@ -5,9 +5,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('tasks').insert([
-        {description: "Do Homework", status: 'pending'},
-        {description: "Do GD6", status: 'pending'},
-        {description: "Learn React", status: 'pending'}
+        {id: 1, description: "Do Homework", status: 'pending'},
+        {id: 2, description: "Do GD6", status: 'pending'},
+        {id: 3, description: "Learn React", status: 'pending'}
       ]);
     });
 };
