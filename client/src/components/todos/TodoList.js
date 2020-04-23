@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Todo from './Todo';
 
@@ -98,14 +98,14 @@ class TodoList extends Component {
         return (
             <>
             <div>
-                <form onSubmit={this.onSubmit} class="form-inline">
-                    <div class="form-group mb-2">
-                        <label class="sr-only" for="description2">TODO</label>
-                        <input type="text" readonly class="form-control-plaintext w-50" id="description2" value="TODO"></input>
+                <form onSubmit={this.onSubmit} className="form-inline">
+                    <div className="form-group mb-2">
+                        <label className="sr-only" htmlFor="description2">TODO</label>
+                        <input type="text" readOnly className="form-control-plaintext w-50" id="description2" value="TODO"></input>
                     </div>
-                    <div class="form-group mx-sm-3 mb-2">
+                    <div className="form-group mx-sm-3 mb-2">
                         <input 
-                            class="form-control"
+                            className="form-control"
                             placeholder="What to do..."
                             type="text"
                             id="description" 
@@ -115,7 +115,7 @@ class TodoList extends Component {
                             />
                     </div>
                         <button
-                            class="btn btn-primary mb-2"
+                            className="btn btn-primary mb-2"
                             type="submit"
                             onClick={this.onSubmit.bind(this)}>
                                 Submit
@@ -123,22 +123,23 @@ class TodoList extends Component {
                 </form>
             </div>
             <div>
-                <table class="table table-dark">
-                <thead class="thead-dark">
-                    <th>#</th>
-                    <th>Task</th>
-                    <th></th>
-                    <th></th>
+                <table className="table table-dark">
+                <thead className="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Task</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     {this.state.tasks.map((todo, i) => {
                     return (
-                        <tr key={i} style={{backgroundColor: todo.status == 'pending' ? "" : 'grey'}}>
-                            <td>{i}</td>
-                            <td>{todo.description}</td>
+                        <tr key={i} style={{backgroundColor: todo.status === 'pending' ? "" : 'grey'}}>
+                            <Todo id={i} todo={todo} />
                             <td>
                                 <button
-                                    class="btn btn-success"
+                                    className="btn btn-success"
                                     href=""
                                     onClick={this.onUpdate.bind(this, todo.id)}
                                 >
@@ -147,7 +148,7 @@ class TodoList extends Component {
                             </td>
                             <td>
                                 <button
-                                    class="btn btn-danger"
+                                    className="btn btn-danger"
                                     href=""
                                     onClick={this.onDelete.bind(
                                         this,
@@ -156,9 +157,6 @@ class TodoList extends Component {
                                 >
                                         Borrar
                                 </button>
-                            </td>
-                            <td>
-                                <Todo id={todo.id}/>
                             </td>
                         </tr>
                     )

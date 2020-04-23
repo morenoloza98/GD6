@@ -1,35 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class Todo extends Component {
-    constructor(props){
-        super(props);
-    }
+
     state = {
-        task: []
-    }
-
-    showSingle = (id) => {
-        axios.get(`/tasks/${id}`)
-            .then(res => {
-                this.setState({task: res.data.data})
-            })
-            .catch(err => console.log(err));
-    }
-
-    onShow = (value, e) => {
-        e.preventDefault()
-        this.showSingle(value)
+        id: this.props.id,
+        description: this.props.todo.description
     }
 
     render(){
         return(
-            <button
-                class="btn btn-warning"
-                href=""
-                onClick={this.onShow.bind(this.props.id)}>
-                    Ver
-            </button>
+            <>
+                <td>{this.state.id}</td>
+                <td>{this.state.description}</td>
+            </>
         )
     }
 }
